@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cardio Club — Calendario discussioni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,500,0,0" rel="stylesheet">
+<style>
+:root{--bg:#f7f8fc;--card:#fff;--ink:#18233d;--muted:#778299;--accent:#3759dc;--line:#e8ecf5;--soft:#eef2ff;--ok:#12846c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:920px;margin:auto;padding:42px 22px 90px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(29px,5vw,43px);margin:9px 0 8px;letter-spacing:-.04em}p{color:var(--muted);line-height:1.6;margin:0}
+.logo{width:52px;height:52px;background:#e8ecff;border-radius:17px;display:grid;place-items:center;font-size:25px}
+.stats{display:flex;gap:10px;margin:28px 0;flex-wrap:wrap}.stat{background:white;border:1px solid var(--line);border-radius:15px;padding:14px 20px;flex:1;min-width:130px}.stat b{font-size:25px}.stat small{display:block;color:var(--muted);margin-top:3px}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 14px}.field{flex:1;min-width:210px}.field label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:7px}
+.select-wrap{position:relative}.select-wrap .material-symbols-rounded{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--muted);pointer-events:none}
+select,input{width:100%;border:1px solid #dce2ee;background:white;border-radius:12px;padding:13px 15px;font-size:15px;color:var(--ink);outline:none}
+select{appearance:none;-webkit-appearance:none;padding-right:44px;cursor:pointer}
+select:focus,input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #3759dc18}
+.session{margin-top:26px}.session h2{font-size:22px;letter-spacing:-.025em;margin:0 0 7px}.sub{font-size:14px;margin-bottom:18px}
+.progress{height:7px;border-radius:30px;background:#e4e9f3;overflow:hidden;margin-top:14px}.progress>div{height:100%;background:var(--accent);width:0%;transition:width .25s}
+.pdf{background:var(--card);border:1px solid var(--line);border-radius:17px;margin:11px 0;overflow:hidden;box-shadow:0 3px 15px #17234407}
+.pdf summary{list-style:none;display:flex;align-items:center;gap:13px;cursor:pointer;padding:18px 20px}
+.pdf summary::-webkit-details-marker{display:none}.num{background:var(--soft);color:var(--accent);border-radius:9px;font-weight:800;font-size:12px;padding:9px 10px;flex-shrink:0}
+.pdfname{font-weight:700;line-height:1.45;flex:1}.count{font-size:12px;color:var(--muted);white-space:nowrap}.chev{font-size:22px;color:var(--muted);line-height:1;transition:transform .2s}.pdf[open] .chev{transform:rotate(180deg)}
+.topics{padding:0 20px 16px 20px;border-top:1px solid var(--line)}.topic{display:flex;align-items:flex-start;gap:12px;padding:15px 1px;border-bottom:1px solid #f0f2f7}.topic:last-child{border:0;padding-bottom:2px}
+.topic input{width:18px;height:18px;accent-color:var(--accent);margin:2px 0 0;flex-shrink:0;cursor:pointer}.topic label{line-height:1.55;cursor:pointer;flex:1}.topic input:checked+label{color:#9098a9;text-decoration:line-through}
+.empty{padding:38px;text-align:center;background:white;border-radius:16px;color:var(--muted)}
+footer{font-size:12px;color:var(--muted);margin-top:30px;line-height:1.7}.reset{border:0;background:transparent;color:var(--accent);font-weight:700;cursor:pointer;padding:9px}
+@media(max-width:600px){main{padding:25px 14px 70px}.pdf summary{padding:15px}.count{display:none}.stats{gap:8px}.stat{padding:12px}.stat b{font-size:22px}}
+
+/* iPad Safari: portrait, landscape, and touch-friendly layouts */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{min-width:320px}
+main{width:100%;max-width:1080px;padding:clamp(24px,4vw,54px) clamp(16px,4vw,48px) 90px}
+header>div:first-child{min-width:0;flex:1}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{min-width:0}
+.toolbar{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{min-width:0}
+select,input{min-height:48px;font-size:16px}
+.pdf summary{min-height:64px;touch-action:manipulation}
+.pdfname{min-width:0;overflow-wrap:anywhere}
+.topic{min-height:54px;align-items:center}
+.topic input{width:22px;height:22px;margin:0}
+.topic label{padding:4px 0;font-size:16px}
+.reset{min-height:44px}
+@media(min-width:700px) and (max-width:1100px){
+ main{max-width:960px;padding-left:32px;padding-right:32px}
+ .pdf summary{padding:20px 22px}
+ .topics{padding-left:22px;padding-right:22px}
+ .session h2{font-size:26px}
+}
+@media(max-width:699px){
+ main{padding:24px 16px 72px}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .toolbar{grid-template-columns:1fr;gap:12px}
+ .pdf summary{padding:16px;gap:10px}
+ .topics{padding:0 16px 14px}
+ .count{display:none}
+ .logo{width:44px;height:44px}
+}
+@media(hover:hover){.pdf summary:hover{background:#fafbff}}
+</style>
+</head>
+<body><main>
+<header><div><div class="eyebrow">Cardiology study sessions</div><h1>Cardio Club <span aria-hidden="true">♡</span></h1><p>Sei incontri, 28 lezioni e 84 argomenti da discutere insieme.</p></div><div class="logo" aria-hidden="true">♥</div></header>
+<section class="stats" aria-label="Riepilogo"><div class="stat"><b>6</b><small>Incontri</small></div><div class="stat"><b>28</b><small>PDF</small></div><div class="stat"><b>84</b><small>Argomenti</small></div><div class="stat"><b id="done">0</b><small>Completati</small></div></section>
+<div class="toolbar"><div class="field"><label for="date">DATA DELL'INCONTRO</label><div class="select-wrap"><select id="date"></select><span class="material-symbols-rounded" aria-hidden="true">expand_more</span></div></div><div class="field"><label for="search">CERCA ARGOMENTO O LEZIONE</label><input id="search" placeholder="Es. FFR, Brugada, DAPT..." autocomplete="off"></div></div>
+<section class="session"><h2 id="heading"></h2><p class="sub" id="subtitle"></p><div class="progress"><div id="bar"></div></div><div id="list"></div></section>
+<footer>Spunta gli argomenti completati: i progressi vengono salvati solo in questo browser. <div><button class="reset" id="reset">Azzera i progressi</button></div></footer>
+</main>
+<script>
+const sessions=[{"date":"11 novembre","theme":"Aritmologia: meccanismi, EPS, sincope e tachicardie","docs":[{"id":1,"name":"Vergara — Meccanismi delle aritmie","topics":[{"id":"1-1","title":"Automaticità normale e anomala"},{"id":"1-2","title":"Attività triggerata: EAD e DAD"},{"id":"1-3","title":"Meccanismi elettrofisiologici del rientro"}]},{"id":2,"name":"Strisciuglio — Studio elettrofisiologico","topics":[{"id":"2-1","title":"Indicazioni allo studio elettrofisiologico"},{"id":"2-2","title":"Misurazione della conduzione intracardiaca"},{"id":"2-3","title":"Stimolazione elettrica programmata"}]},{"id":7,"name":"Strisciuglio — Sincope","topics":[{"id":"7-1","title":"Diagnosi differenziale della sincope"},{"id":"7-2","title":"Scelta degli esami nella sincope"},{"id":"7-3","title":"Sincope e indicazione al pacemaker"}]},{"id":8,"name":"Vergara — Tachicardia da rientro nodale atrioventricolare","topics":[{"id":"8-1","title":"Circuiti e forme di AVNRT"},{"id":"8-2","title":"Salto AH ed eco nodale"},{"id":"8-3","title":"Ablazione della via lenta"}]},{"id":9,"name":"Strisciuglio — Sindrome di Wolff-Parkinson-White","topics":[{"id":"9-1","title":"Localizzazione delle vie accessorie"},{"id":"9-2","title":"AVRT e fibrillazione atriale preeccitata"},{"id":"9-3","title":"Rischio nella preeccitazione asintomatica"}]}]},{"date":"13 novembre","theme":"Canalopatie, bradiaritmie, ICD e CRT","docs":[{"id":3,"name":"Rapacciuolo — Disfunzione del nodo del seno e blocchi atrioventricolari","topics":[{"id":"3-1","title":"Disfunzione del nodo del seno"},{"id":"3-2","title":"Diagnosi e stratificazione del blocco AV"},{"id":"3-3","title":"Strategie di stimolazione cardiaca"}]},{"id":4,"name":"Pergola — Sindromi del QT lungo e corto e tachicardie ventricolari idiopatiche","topics":[{"id":"4-1","title":"Diagnosi della sindrome del QT lungo"},{"id":"4-2","title":"Genotipi e trattamento della LQTS"},{"id":"4-3","title":"QT corto e aritmie ventricolari idiopatiche"}]},{"id":5,"name":"Rapacciuolo — Prevenzione della morte cardiaca improvvisa e dispositivi nello scompenso cardiaco","topics":[{"id":"5-1","title":"Stratificazione del rischio di morte cardiaca improvvisa"},{"id":"5-2","title":"Prevenzione primaria e secondaria con ICD"},{"id":"5-3","title":"CRT e scelta del dispositivo"}]},{"id":6,"name":"Vergara — Studi clinici su ICD e CRT","topics":[{"id":"6-1","title":"Trial storici su antiaritmici e ICD"},{"id":"6-2","title":"Evidenze ICD nelle cardiomiopatie"},{"id":"6-3","title":"Trial CRT e predittori di risposta"}]},{"id":10,"name":"Vergara — Sindrome di Brugada, ripolarizzazione precoce e CPVT","topics":[{"id":"10-1","title":"Diagnosi della sindrome di Brugada"},{"id":"10-2","title":"Rischio di morte improvvisa nella Brugada"},{"id":"10-3","title":"CPVT e ripolarizzazione precoce"}]}]},{"date":"15 novembre","theme":"Diagnostica ischemica e fisiologia coronarica","docs":[{"id":11,"name":"Ciampi — Ecocardiografia da stress","topics":[{"id":"11-1","title":"Valutazione fisiologica con eco-stress"},{"id":"11-2","title":"Scelta dello stressor"},{"id":"11-3","title":"Diagnosi e prognosi con eco-stress"}]},{"id":12,"name":"La Mura — Tomografia computerizzata coronarica e risonanza magnetica cardiaca","topics":[{"id":"12-1","title":"Scelta tra CCTA e imaging funzionale"},{"id":"12-2","title":"CMR da stress e vitalità miocardica"},{"id":"12-3","title":"Interpretazione integrata dell'imaging"}]},{"id":15,"name":"Bardi — Coronarografia e identificazione della coronaropatia ostruttiva","topics":[{"id":"15-1","title":"Proiezioni coronarografiche"},{"id":"15-2","title":"Limiti nella valutazione della stenosi"},{"id":"15-3","title":"Ruolo complementare di FFR, IVUS e OCT"}]},{"id":17,"name":"SPECT e PET — Imaging della perfusione miocardica","topics":[{"id":"17-1","title":"Principi di misurazione SPECT e PET"},{"id":"17-2","title":"Ischemia bilanciata"},{"id":"17-3","title":"Integrazione dei parametri prognostici"}]},{"id":21,"name":"Di Serafino — Fisiologia coronarica, ANOCA e INOCA","topics":[{"id":"21-1","title":"Principi di FFR e iFR"},{"id":"21-2","title":"Endotipi di ANOCA e INOCA"},{"id":"21-3","title":"Test CFR, IMR e acetilcolina"}]}]},{"date":"18 novembre","theme":"Rivascolarizzazione, accessi e complicanze","docs":[{"id":13,"name":"Cirillo — Accessi vascolari e complicanze in sala di emodinamica","topics":[{"id":"13-1","title":"Accesso radiale versus femorale"},{"id":"13-2","title":"Complicanze della procedura coronarica"},{"id":"13-3","title":"Valutazione del rischio prima della procedura"}]},{"id":14,"name":"Giugliano — Accessi vascolari e complicanze","topics":[{"id":"14-1","title":"Scelta della via d'accesso"},{"id":"14-2","title":"Diagnosi delle complicanze vascolari"},{"id":"14-3","title":"Prevenzione delle complicanze"}]},{"id":16,"name":"Piccolo — Rivascolarizzazione nella disfunzione ventricolare sinistra","topics":[{"id":"16-1","title":"STICH/STICHES e REVIVED"},{"id":"16-2","title":"Ruolo della vitalità miocardica"},{"id":"16-3","title":"Scelta tra CABG, PCI e OMT"}]},{"id":18,"name":"Pilato — Rivascolarizzazione miocardica chirurgica","topics":[{"id":"18-1","title":"CABG versus PCI"},{"id":"18-2","title":"CABG on-pump versus off-pump"},{"id":"18-3","title":"Scelta dei condotti per bypass"}]},{"id":23,"name":"Complicanze in sala di emodinamica","topics":[{"id":"23-1","title":"Dissezione e perforazione iatrogene"},{"id":"23-2","title":"Terapia antitrombotica e sanguinamento"},{"id":"23-3","title":"Prevenzione delle complicanze postprocedurali"}]}]},{"date":"20 novembre","theme":"SCA: rivascolarizzazione, shock e diagnosi differenziale","docs":[{"id":19,"name":"Piccolo — Rivascolarizzazione nelle sindromi coronariche acute","topics":[{"id":"19-1","title":"Rottura, erosione e guarigione di placca"},{"id":"19-2","title":"PCI culprit-only versus completa"},{"id":"19-3","title":"Morfologia della lesione e scelta interventistica"}]},{"id":20,"name":"Piccolo — Shock cardiogeno e supporto meccanico al circolo","topics":[{"id":"20-1","title":"Meccanismi emodinamici del supporto circolatorio"},{"id":"20-2","title":"Trial sullo shock cardiogeno"},{"id":"20-3","title":"Scelta del supporto e complicanze"}]},{"id":22,"name":"Di Serafino — Infarto miocardico senza coronaropatia ostruttiva (MINOCA)","topics":[{"id":"22-1","title":"Criteri diagnostici della MINOCA"},{"id":"22-2","title":"Diagnosi differenziale delle cause di MINOCA"},{"id":"22-3","title":"Utilizzo di CMR, OCT e IVUS"}]},{"id":26,"name":"Spaccarotella — Dissezioni coronariche spontanee","topics":[{"id":"26-1","title":"Classificazione angiografica di Saw"},{"id":"26-2","title":"Terapia conservativa versus rivascolarizzazione"},{"id":"26-3","title":"SCAD in gravidanza e nel post-partum"}]},{"id":27,"name":"Losi — Complicanze meccaniche dell'infarto miocardico","topics":[{"id":"27-1","title":"Complicanze da rottura post-infartuale"},{"id":"27-2","title":"Shock e diagnosi ecocardiografica"},{"id":"27-3","title":"Trattamento urgente e supporto circolatorio"}]}]},{"date":"22 novembre","theme":"Terapia medica, antitrombotica e linee guida","docs":[{"id":24,"name":"Franzone — Terapia medica ottimale nelle sindromi coronariche acute e croniche","topics":[{"id":"24-1","title":"OMT e rivascolarizzazione"},{"id":"24-2","title":"Differenze terapeutiche tra SCA e SCC"},{"id":"24-3","title":"Interpretazione di trial e linee guida"}]},{"id":25,"name":"Cirillo — Terapia antitrombotica nelle sindromi coronariche acute","topics":[{"id":"25-1","title":"Pretreatment con inibitori P2Y12"},{"id":"25-2","title":"Confronto tra anticoagulanti"},{"id":"25-3","title":"Scelta dell'inibitore P2Y12"}]},{"id":28,"name":"Gargiulo — Valutazione del rischio ischemico ed emorragico e terapia antitrombotica","topics":[{"id":"28-1","title":"ARC-HBR e PRECISE-DAPT"},{"id":"28-2","title":"DAPT dopo PCI complessa"},{"id":"28-3","title":"MASTER DAPT e strategie abbreviate"}]}]}];
+const date=document.getElementById('date'),search=document.getElementById('search'),list=document.getElementById('list');
+const key='cardio-club-progress-v2';
+let checked={};try{checked=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+sessions.forEach((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=s.date;date.appendChild(o)});
+function escapeHTML(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){
+ const s=sessions[+date.value],query=search.value.trim().toLocaleLowerCase('it');
+ document.getElementById('heading').textContent=s.date;
+ document.getElementById('subtitle').textContent=s.theme;
+ const all=s.docs.flatMap(d=>d.topics),complete=all.filter(t=>checked[t.id]).length;
+ document.getElementById('bar').style.width=(complete/all.length*100)+'%';
+ document.getElementById('done').textContent=sessions.flatMap(s=>s.docs.flatMap(d=>d.topics)).filter(t=>checked[t.id]).length;
+ list.innerHTML='';
+ for(const d of s.docs){
+  const matchDoc=(d.name+' '+d.id).toLocaleLowerCase('it').includes(query);
+  const topics=d.topics.filter(t=>!query||matchDoc||t.title.toLocaleLowerCase('it').includes(query));
+  if(!topics.length)continue;
+  const det=document.createElement('details');det.className='pdf';if(query)det.open=true;
+  const count=d.topics.filter(t=>checked[t.id]).length;
+  det.innerHTML=`<summary><span class="num">PDF ${d.id}</span><span class="pdfname">${escapeHTML(d.name)}</span><span class="count">${count}/3 completati</span><span class="material-symbols-rounded chev" aria-hidden="true">expand_more</span></summary><div class="topics">${topics.map(t=>`<div class="topic"><input type="checkbox" id="t-${t.id}" data-id="${t.id}" ${checked[t.id]?'checked':''}><label for="t-${t.id}">${escapeHTML(t.title)}</label></div>`).join('')}</div>`;
+  list.appendChild(det);
+ }
+ if(!list.children.length)list.innerHTML='<div class="empty">Nessun argomento trovato.</div>';
+}
+list.addEventListener('change',e=>{if(e.target.matches('input[type=checkbox]')){checked[e.target.dataset.id]=e.target.checked;try{localStorage.setItem(key,JSON.stringify(checked))}catch(e){};const opened=[...list.querySelectorAll('details')].map(x=>x.open);render();[...list.querySelectorAll('details')].forEach((x,i)=>x.open=opened[i]);}});
+date.addEventListener('change',render);search.addEventListener('input',render);
+document.getElementById('reset').addEventListener('click',()=>{if(confirm('Vuoi azzerare tutti i progressi?')){checked={};try{localStorage.removeItem(key)}catch(e){}render()}});
+render();
+</script></body></html>
